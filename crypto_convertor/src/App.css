@@ -1,0 +1,12 @@
+.container{
+  height: 99vh;
+  background-color: #f7931a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-justify-sb{
+  display: flex;
+  justify-content: space-between;
+}
