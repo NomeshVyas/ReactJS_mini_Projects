@@ -1,9 +1,15 @@
 .container{
-  height: 99vh;
+  width: 100vw;
+  height: 100vh;
   background-color: #f7931a;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.crypto-card{
+  min-width: 450px;
+  z-index: 10
 }
 
 .flex-justify-sb{
