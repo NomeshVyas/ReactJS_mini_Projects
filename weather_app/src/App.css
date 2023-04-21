@@ -17,6 +17,9 @@
   justify-content: center;
   width: 100%;
 }
+.orange{
+  color: #f47b21;
+}
 .container {
   width: 300px;
   height: 400px;
@@ -42,15 +45,38 @@
   margin-top: 10%;
   font-size: 2.5rem;
   gap: 15px;
-  /* border: 1px solid black; */
 }
-.fa-solid {
+.icon{
+  /* border: 1px solid black; */
+  width: 40px;
+  height: 40px;
+  /* background-image: url("./Components/weather_icon_full_sun.svg"); */
+  background-size: cover;
+
+}
+/* .fa-solid {
   color: #f47b21;
-}
+} */
 .normal-temp{
-  /* border: 1px solid black; */
   font-size: 2.15rem;
+  
 }
 .min-max{
   margin-top: 2%;
+}
+.notFound{
+  text-shadow: 1px 1px #f47b21;
+  animation: notFound 1s ease-in 1ms infinite alternate;
+}
+.otherInformation{
+  margin-top: 10px;
+  font-size: 0.8rem;
+}
+@keyframes notFound {
+  0%{
+    height: 70%;
+  }
+  100%{
+    height: 80%;
+  }
 }
