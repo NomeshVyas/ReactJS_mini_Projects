@@ -17,25 +17,25 @@ function WeatherBox() {
 
   const fetchData = async () => {
     if (!queryCity) return;
-    const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?&q=${queryCity}&appid=${ApiKey}`
-    );
-    const jsonData = await response.json();
-    if (jsonData.cod === "404") {
-      return;
-    } else {
-      setCityName(jsonData.name);
-      setNormalTemp(jsonData.main.temp);
-      setTempMin(jsonData.main.temp_min);
-      setTempMax(jsonData.main.temp_max);
-      setCountryName(jsonData.sys.country);
-      setWindSpeed(jsonData.wind.speed);
-      setHumidity(jsonData.main.humidity);
-      setWeather(jsonData.weather[0].description);
-      setLongitude(jsonData.coord.lon);
-      setLatitude(jsonData.coord.lat);
-    }
-
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?&q=${queryCity}&appid=${ApiKey}`
+        );
+      const jsonData = await response.json();
+      if (jsonData.cod === "404") {
+        return;
+      } else {
+        setCityName(jsonData.name);
+        setNormalTemp(jsonData.main.temp);
+        setTempMin(jsonData.main.temp_min);
+        setTempMax(jsonData.main.temp_max);
+        setCountryName(jsonData.sys.country);
+        setWindSpeed(jsonData.wind.speed);
+        setHumidity(jsonData.main.humidity);
+        setWeather(jsonData.weather[0].description);
+        setLongitude(jsonData.coord.lon);
+        setLatitude(jsonData.coord.lat);
+      }
+      
     if (jsonData.weather[0].icon === "01d") {
       setWeatherIcon("d1");
     } else if (jsonData.weather[0].icon === "01n") {
@@ -75,7 +75,25 @@ function WeatherBox() {
     ) {
       setWeatherIcon("dn50");
     }
-  };
+  }
+  const findMyCity = () => {
+    const success = (position) => {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+      const geoApiUrl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&lacalityLanguage=en`;
+      fetch(geoApiUrl)
+      .then(res => res.json())
+      .then(data => setQueryCity(data.city))
+    }
+    const error = () => {
+      // console.log("unable to find your city");
+    }
+    navigator.geolocation.getCurrentPosition(success, error);
+  }
+
+  useEffect(() => {
+    findMyCity();
+  }, [])
 
   useEffect(() => {
     fetchData();
