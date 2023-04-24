@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function WeatherBox() {
+export default function WeatherBox() {
   const ApiKey = "7a2b2076d661e90a990a69837f7a201c";
   const [queryCity, setQueryCity] = useState(null);
   const [normalTemp, setNormalTemp] = useState(null);
@@ -17,67 +17,71 @@ function WeatherBox() {
 
   const fetchData = async () => {
     if (!queryCity) return;
-      const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?&q=${queryCity}&appid=${ApiKey}`
-        );
-      const jsonData = await response.json();
-      if (jsonData.cod === "404") {
-        return;
-      } else {
-        setCityName(jsonData.name);
-        setNormalTemp(jsonData.main.temp);
-        setTempMin(jsonData.main.temp_min);
-        setTempMax(jsonData.main.temp_max);
-        setCountryName(jsonData.sys.country);
-        setWindSpeed(jsonData.wind.speed);
-        setHumidity(jsonData.main.humidity);
-        setWeather(jsonData.weather[0].description);
-        setLongitude(jsonData.coord.lon);
-        setLatitude(jsonData.coord.lat);
-      }
+    // try {
+    fetch(
+      `https://api.openweathermap.org/data/2.5/weather?&q=${queryCity}&appid=${ApiKey}`
+    )
+    .then(response => response.json())
+    .then( jsonData => {
+      setCityName(jsonData.name);
+      setNormalTemp(jsonData.main.temp);
+      setTempMin(jsonData.main.temp_min);
+      setTempMax(jsonData.main.temp_max);
+      setCountryName(jsonData.sys.country);
+      setWindSpeed(jsonData.wind.speed);
+      setHumidity(jsonData.main.humidity);
+      setWeather(jsonData.weather[0].description);
+      setLongitude(jsonData.coord.lon);
+      setLatitude(jsonData.coord.lat);
       
-    if (jsonData.weather[0].icon === "01d") {
-      setWeatherIcon("d1");
-    } else if (jsonData.weather[0].icon === "01n") {
-      setWeatherIcon("n1");
-    } else if (jsonData.weather[0].icon === "02d") {
-      setWeatherIcon("d2");
-    } else if (jsonData.weather[0].icon === "02n") {
-      setWeatherIcon("n2");
-    } else if (
-      jsonData.weather[0].icon === "03d" ||
-      jsonData.weather[0].icon === "03n" ||
-      jsonData.weather[0].icon === "04d" ||
-      jsonData.weather[0].icon === "04n"
-    ) {
-      setWeatherIcon("dn34");
-    } else if (jsonData.weather[0].icon === "09d") {
-      setWeatherIcon("d9");
-    } else if (jsonData.weather[0].icon === "09n") {
-      setWeatherIcon("n9");
-    } else if (
-      jsonData.weather[0].icon === "10d" ||
-      jsonData.weather[0].icon === "10n"
-    ) {
-      setWeatherIcon("dn10");
-    } else if (
-      jsonData.weather[0].icon === "11d" ||
-      jsonData.weather[0].icon === "11n"
-    ) {
-      setWeatherIcon("dn11");
-    } else if (jsonData.weather[0].icon === "13d") {
-      setWeatherIcon("d13");
-    } else if (jsonData.weather[0].icon === "13n") {
-      setWeatherIcon("n13");
-    } else if (
-      jsonData.weather[0].icon === "50d" ||
-      jsonData.weather[0].icon === "50n"
-    ) {
-      setWeatherIcon("dn50");
+      if (jsonData.weather[0].icon === "01d") {
+        setWeatherIcon("d1");
+      } else if (jsonData.weather[0].icon === "01n") {
+        setWeatherIcon("n1");
+      } else if (jsonData.weather[0].icon === "02d") {
+        setWeatherIcon("d2");
+      } else if (jsonData.weather[0].icon === "02n") {
+        setWeatherIcon("n2");
+      } else if (
+        jsonData.weather[0].icon === "03d" ||
+        jsonData.weather[0].icon === "03n" ||
+        jsonData.weather[0].icon === "04d" ||
+        jsonData.weather[0].icon === "04n"
+      ) {
+        setWeatherIcon("dn34");
+      } else if (jsonData.weather[0].icon === "09d") {
+        setWeatherIcon("d9");
+      } else if (jsonData.weather[0].icon === "09n") {
+        setWeatherIcon("n9");
+      } else if (
+        jsonData.weather[0].icon === "10d" ||
+        jsonData.weather[0].icon === "10n"
+      ) {
+        setWeatherIcon("dn10");
+      } else if (
+        jsonData.weather[0].icon === "11d" ||
+        jsonData.weather[0].icon === "11n"
+      ) {
+        setWeatherIcon("dn11");
+      } else if (jsonData.weather[0].icon === "13d") {
+        setWeatherIcon("d13");
+      } else if (jsonData.weather[0].icon === "13n") {
+        setWeatherIcon("n13");
+      } else if (
+        jsonData.weather[0].icon === "50d" ||
+        jsonData.weather[0].icon === "50n"
+      ) {
+        setWeatherIcon("dn50");
+      }
+      })
     }
-  }
-  const findMyCity = () => {
-    const success = (position) => {
+    // } catch (error) {
+    //   console.error("Something bad happened");
+    //   console.error(error);
+    // }
+        
+    const findMyCity = () => {
+      const success = (position) => {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
       const geoApiUrl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&lacalityLanguage=en`;
@@ -197,5 +201,3 @@ function WeatherBox() {
     </div>
   );
 }
-
-export default WeatherBox;
