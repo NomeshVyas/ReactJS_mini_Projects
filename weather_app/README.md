@@ -10,5 +10,5 @@ Accessing users geolocation, Resolving a Promise, React Hooks and many more...
 https://openweathermap.org/api
 
 ##### Here u can see this Project (Demo Link) -
-##### ( Unable your device's Location for better experience )
+##### ( Enable your device's Location for better experience )
 https://weather24app1.netlify.app/
