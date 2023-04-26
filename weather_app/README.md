@@ -7,7 +7,8 @@ Here I created a Weather app via React JS. In this website you can check Tempera
 Accessing users geolocation, Resolving a Promise, React Hooks and many more...
 
 #### API source -
-https://openweathermap.org/api
+Weather API Source - https://openweathermap.org/api
+GeoLocation API Source - https://www.bigdatacloud.com/
 
 ##### Here u can see this Project (Demo Link) -
 ##### ( Enable your device's Location for better experience )

@@ -40,7 +40,8 @@ Accessing users geolocation, Resolving a Promise, React Hooks and many more...
 
 ##### Here u can see this Project (Demo Link) -
 ##### ( Enable your device's Location for better experience )
-https://weather24app1.netlify.app/
+Weather API Source - https://openweathermap.org/api
+GeoLocation API Source - https://www.bigdatacloud.com/
 
 ###### API source -
 https://openweathermap.org/api
