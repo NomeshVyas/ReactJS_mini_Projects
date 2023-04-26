@@ -123,6 +123,7 @@ export default function WeatherBox() {
             }}
             autoFocus
           />
+          <button className="locationIcon flex" onClick={()=>{findMyCity()}}><i className="fa-solid fa-location-dot"></i></button>
         </form>
         {cityName && (
           <div style={{ height: "80%" }}>

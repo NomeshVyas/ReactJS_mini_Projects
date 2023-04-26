@@ -29,16 +29,33 @@
 .input-box {
   border-top-right-radius: 25px;
   border-top-left-radius: 25px;
+  margin-top: 10px;
 }
 .input {
-  width: 90%;
+  width: 70%;
   outline: none;
   height: 40px;
   border-radius: 20px;
   padding-inline: 10px;
   border: 2px solid #f47b21;
-  font-size: 1.25rem;
-  margin-top: 10px;
+  font-size: 1.1rem;
+}
+.locationIcon{
+  border: 2px solid #f47b21;
+  background-color: white;
+  color: #f47b21;
+  border-radius: 50%;
+  margin-inline: 1%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.45rem;
+  cursor: pointer;
+}
+.locationIcon:hover{
+  border: 2px solid white;
+  background-color: #f47b21;
+  color: white;
+
 }
 .globeIcon {
   width: 35px;
@@ -125,18 +142,16 @@
 }
 @media screen and (max-width: 540px) {
   .container {
-    width: 80vw;
-    height: 65vh;
+    width: 90vw;
+    height: 60vh;
   }
   .notFound {
     font-size: 3rem;
   }
-  .input {
-    height: 40px;
+  .input-box {
     margin-top: 15px;
   }
   .otherInformation {
-    font-size: 1rem;
     margin-bottom: 5%;
   }
 }
